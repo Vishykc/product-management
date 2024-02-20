@@ -10,35 +10,55 @@ INSERT INTO products (id, code, name, price_eur, price_usd, description) VALUES
 
 -- Insert reviews for Product 1
 INSERT INTO reviews (id, product_id, reviewer, text, rating) VALUES
-                                                             (1, 1, 'John Doe', 'Great product!', 5),
-                                                             (2, 1, 'Jane Smith', 'Not bad, but could be better.', 3);
+                                                                 (1, 1, 'John Doe', 'Great product!', 5),
+                                                                 (2, 1, 'Jane Smith', 'Not bad, but could be better.', 3);
+
 
 -- Insert reviews for Product 2
 INSERT INTO reviews (id, product_id, reviewer, text, rating) VALUES
-                                                             (3, 2, 'Alice Johnson', 'Excellent quality!', 5),
-                                                             (4, 2, 'Bob Brown', 'Good value for money.', 4);
+                                                                 (3, 2, 'Alice Johnson', 'Excellent quality!', 5),
+                                                                 (4, 2, 'Bob Brown', 'Good value for money.', 4),
+                                                                 (17, 2, 'Ethan Thompson', 'Average performance.', 3),
+                                                                 (18, 2, 'Emma Garcia', 'Sleek design.', 5);
+
 
 -- Insert reviews for Product 3
 INSERT INTO reviews (id, product_id, reviewer, text, rating) VALUES
-                                                             (5, 3, 'Emily Davis', 'Impressive features.', 5),
-                                                             (6, 3, 'Michael Wilson', 'Average product.', 3);
+                                                                 (5, 3, 'Emily Davis', 'Impressive features.', 5),
+                                                                 (6, 3, 'Michael Wilson', 'Average product.', 3),
+                                                                 (19, 3, 'Mia Rodriguez', 'Could be improved.', 3),
+                                                                 (20, 3, 'Noah Martinez', 'Decent sound quality.', 4),
+                                                                 (33, 3, 'Harper Allen', 'Comfortable to wear for long periods.', 4),
+                                                                 (34, 3, 'Aiden Young', 'Great connectivity.', 5);
 
 -- Insert reviews for Product 4
 INSERT INTO reviews (id, product_id, reviewer, text, rating) VALUES
-                                                             (7, 4, 'Sophia Martinez', 'Love it!', 5),
-                                                             (8, 4, 'William Anderson', 'Not satisfied with the performance.', 2);
+                                                                 (7, 4, 'Sophia Martinez', 'Love it!', 5),
+                                                                 (8, 4, 'William Anderson', 'Not satisfied with the performance.', 2),
+                                                                 (21, 4, 'Ava Hernandez', 'Great features.', 4),
+                                                                 (22, 4, 'Liam Thomas', 'Excellent battery life.', 5),
+                                                                 (35, 4, 'Charlotte Baker', 'Good for tracking workouts.', 4);
+
 
 -- Insert reviews for Product 5
 INSERT INTO reviews (id, product_id, reviewer, text, rating) VALUES
-                                                             (9, 5, 'Olivia Taylor', 'Highly recommended.', 5),
-                                                             (10, 5, 'James Thomas', 'Could be improved.', 3);
+                                                                 (9, 5, 'Olivia Taylor', 'Highly recommended.', 5),
+                                                                 (10, 5, 'James Thomas', 'Could be improved.', 3),
+                                                                 (23, 5, 'Isabella Brown', 'Great for gaming.', 5),
+                                                                 (24, 5, 'Mason Jackson', 'Good value for money.', 4),
+                                                                 (37, 5, 'Luna Harris', 'Smooth graphics and fast processing.', 5),
+                                                                 (38, 5, 'Henry Clark', 'Easy setup and user-friendly interface.', 4),
+                                                                 (41, 7, 'Harper Davis', 'Good battery life.', 4);
 
 -- Insert reviews for Product 6
 INSERT INTO reviews (id, product_id, reviewer, text, rating) VALUES
-                                                             (11, 6, 'Isabella Hernandez', 'Awesome product!', 5),
-                                                             (12, 6, 'Liam Moore', 'Slightly overpriced.', 4);
+                                                                 (11, 6, 'Isabella Hernandez', 'Awesome product!', 5),
+                                                                 (12, 6, 'Liam Moore', 'Slightly overpriced.', 4);
+
 
 -- Insert reviews for Product 7
 INSERT INTO reviews (id, product_id, reviewer, text, rating) VALUES
-                                                             (13, 7, 'Amelia Martin', 'Fantastic!', 5),
-                                                             (14, 7, 'Benjamin Jackson', 'Decent product.', 3);
+                                                                 (13, 7, 'Amelia Martin', 'Fantastic!', 5),
+                                                                 (14, 7, 'Benjamin Jackson', 'Decent product.', 3),
+                                                                 (27, 7, 'Avery Lee', 'Great for watching movies.', 4);
+
