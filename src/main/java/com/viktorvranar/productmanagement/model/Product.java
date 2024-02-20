@@ -1,6 +1,7 @@
 package com.viktorvranar.productmanagement.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "products")
@@ -10,7 +11,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique = true, length = 15)
+    @Column(unique = true)
+    @Size(min = 15, max = 15, message = "Code must be exactly 15 characters long")
     private String code;
 
     @Column(name = "name")

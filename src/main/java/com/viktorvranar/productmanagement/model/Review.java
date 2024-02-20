@@ -1,6 +1,8 @@
 package com.viktorvranar.productmanagement.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
 @Entity
 @Table(name = "reviews")
@@ -16,7 +18,9 @@ public class Review {
 
     private String reviewer;
     private String text;
-    private int rating; // Assuming rating is an integer between 1 to 5
+    @Min(value = 1, message = "Rating must be at least 1")
+    @Max(value = 5, message = "Rating must be at most 5")
+    private int rating;
 
     public Long getId() {
         return id;
