@@ -13,10 +13,16 @@ public class Product {
     @Column(unique = true, length = 15)
     private String code;
 
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "price_eur")
     private double priceEUR;
 
+    @Column(name = "price_usd")
     private double priceUSD;
+
+    @Column(name = "description")
     private String description;
 
     public Long getId() {
