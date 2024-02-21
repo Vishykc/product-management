@@ -31,6 +31,28 @@ public class ProductController {
         return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
     }
 
+    @GetMapping("/task")
+    public ResponseEntity<List<Product>> getProducts(@RequestParam(required = false) String code,
+                                                     @RequestParam(required = false) String name) {
+        List<Product> products;
+
+        if (code != null && name != null) {
+            // If both code and name parameters are provided
+            products = productRepository.findByCodeContainingIgnoreCaseAndNameContainingIgnoreCase(code, name);
+        } else if (code != null) {
+            // If only code parameter is provided
+            products = productRepository.findByCodeContainingIgnoreCase(code);
+        } else if (name != null) {
+            // If only name parameter is provided
+            products = productRepository.findByNameContainingIgnoreCase(name);
+        } else {
+            // If no parameters are provided, return all products
+            products = productRepository.findAll();
+        }
+
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
 
 
 
