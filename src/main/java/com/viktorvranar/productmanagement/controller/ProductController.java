@@ -1,7 +1,9 @@
 package com.viktorvranar.productmanagement.controller;
 
+import com.viktorvranar.productmanagement.DTO.ProductRequest;
 import com.viktorvranar.productmanagement.model.Product;
 import com.viktorvranar.productmanagement.repository.ProductRepository;
+import com.viktorvranar.productmanagement.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,37 @@ public class ProductController {
 
     @Autowired
     private ProductRepository productRepository;
+
+    /* REST APIs as required in the task */
+
+
+    @Autowired
+    private ProductService productService;
+
+    @PostMapping("/task")
+    public ResponseEntity<Product> addProduct(@RequestBody ProductRequest productRequest) {
+        Product product = productService.addProduct(productRequest);
+        Product createdProduct = productRepository.save(product);
+        return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Usual CRUD APIs */
 
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
