@@ -1,15 +1,22 @@
 package com.viktorvranar.productmanagement.controller;
 
+import com.viktorvranar.productmanagement.DTO.PopularProductResponse;
 import com.viktorvranar.productmanagement.DTO.ProductRequest;
 import com.viktorvranar.productmanagement.model.Product;
+import com.viktorvranar.productmanagement.model.Review;
 import com.viktorvranar.productmanagement.repository.ProductRepository;
+import com.viktorvranar.productmanagement.repository.ReviewRepository;
 import com.viktorvranar.productmanagement.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/products")
@@ -17,6 +24,9 @@ public class ProductController {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     /* REST APIs as required in the task */
 
@@ -53,7 +63,36 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
+    @GetMapping("/task/popular")
+    public ResponseEntity<Map<String, List<PopularProductResponse>>> getPopularProducts() {
+        List<Product> allProducts = productRepository.findAll();
 
+        // Calculate average rating for each product
+        List<PopularProductResponse> popularProducts = allProducts.stream()
+                .map(product -> {
+                    double averageRating = calculateAverageRating(product);
+                    return new PopularProductResponse(product.getName(), averageRating);
+                })
+                .sorted(Comparator.comparing(PopularProductResponse::getAverageRating).reversed())
+                .limit(3)
+                .collect(Collectors.toList());
+
+        Map<String, List<PopularProductResponse>> response = new HashMap<>();
+        response.put("popularProducts", popularProducts);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    private double calculateAverageRating(Product product) {
+        List<Review> productReviews = reviewRepository.findByProduct(product);
+        if (productReviews.isEmpty()) {
+            return 0.0;
+        }
+        double totalRating = productReviews.stream()
+                .mapToDouble(Review::getRating)
+                .sum();
+        return totalRating / productReviews.size();
+    }
 
 
 
